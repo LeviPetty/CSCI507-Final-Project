@@ -18,7 +18,7 @@ function doesMatch = sift(baseDir, baseFiles, compDir, compFiles)
         [f1, d1] = vl_sift(baseSingle, 'PeakThresh', peakThresh, 'edgethresh', edgeThresh);
 
         for j = 1:length(compFiles)
-            compImg = imread(fullfile(compDir, compFiles(i).name));
+            compImg = imread(fullfile(compDir, compFiles(j).name));
             compGray = rgb2gray(compImg);
             compSingle = single(compGray);
             [f2, d2] = vl_sift(compSingle, 'PeakThresh', peakThresh, 'edgethresh', edgeThresh);
