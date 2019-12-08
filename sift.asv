@@ -1,4 +1,4 @@
-function doesMatch = sift(baseDir, baseFile, compDir, compFile)
+function doesMatch = sift(baseDir, baseFiles, compDir, compFiles)
     peakThresh = 4;
     edgeThresh = 10;
     matchThresh = 15;
@@ -11,12 +11,14 @@ function doesMatch = sift(baseDir, baseFile, compDir, compFile)
     end
 
     % Feature detection for card image
-    baseImg = imread(fullfile(baseDir, baseFile));
+    baseImg = baseFile
+    baseImg = imread(fullfile(baseDir, baseImg));
     baseSingle = single(rgb2gray(baseImg));
     [f1, d1] = vl_sift(baseSingle, 'PeakThresh', peakThresh, 'edgethresh', edgeThresh);
     
     % Feature detection for set image
-    compImg = imread(fullfile(compDir, compFile));
+    compImg = input('Please input name of second file: ', 's');
+    compImg = imread(fullfile(compDir, compImg));
     compSingle = single(rgb2gray(compImg));
     [f2, d2] = vl_sift(compSingle, 'PeakThresh', peakThresh, 'edgethresh', edgeThresh);
     
@@ -25,14 +27,14 @@ function doesMatch = sift(baseDir, baseFile, compDir, compFile)
     doesMatch = (size(matches, 2) >= N);
     
 %     doesMatch = [];
-%     for i = 1:length(baseFile)
-%         baseImg = imread(fullfile(baseDir, baseFile(i).name));
+%     for i = 1:length(baseFiles)
+%         baseImg = imread(fullfile(baseDir, baseFiles(i).name));
 %         baseGray = rgb2gray(baseImg);
 %         baseSingle = single(baseGray);
 %         [f1, d1] = vl_sift(baseSingle, 'PeakThresh', peakThresh, 'edgethresh', edgeThresh);
 % 
-%         for j = 1:length(compFile)
-%             compImg = imread(fullfile(compDir, compFile(j).name));
+%         for j = 1:length(compFiles)
+%             compImg = imread(fullfile(compDir, compFiles(j).name));
 %             compGray = rgb2gray(compImg);
 %             compSingle = single(compGray);
 %             [f2, d2] = vl_sift(compSingle, 'PeakThresh', peakThresh, 'edgethresh', edgeThresh);
