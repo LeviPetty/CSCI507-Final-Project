@@ -39,5 +39,6 @@ if doesMatch
     found = 'Yes';
 end
 
-cardName = extractBetween(baseFile, "", ".jpg")
+cardName = extractBetween(baseFile, "", ".jpg");
 finalImg = insertText(houghImg, [0 0], sprintf('Card %s in image: %s', baseFile, found), 'FontSize', 64, 'BoxColor', 'white');
+imshow(finalImg);
