@@ -20,11 +20,17 @@ else
     if input('Does the Card Images folder have the same path as before? (y/n) ', 's') ~= 'y'
         disp('Please select the Card Images folder');
         baseDir = uigetdir;
+        if baseDir == 0
+            return
+        end
         % baseFiles = dir(fullfile(baseDir, '*.jpg'));
     end
     if input('Does the Kingdoms folder have the same path as before? (y/n) ', 's') ~= 'y'
         disp('Please select the Kingdoms folder');
         compDir = uigetdir;
+        if compDir == 0
+            return
+        end
         % compFiles = dir(fullfile(compDir, '*.jpg'));
     end
 end
